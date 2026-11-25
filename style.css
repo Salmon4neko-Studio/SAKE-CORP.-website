@@ -654,9 +654,22 @@ img {
     }
 
     .footer-links {
+        /* Column layout would treat the desktop flex-basis (22rem) as height
+           and stretch wrapped rows far apart. Size to the links instead. */
+        flex: none;
+        width: 100%;
         flex-wrap: wrap;
-        gap: 1rem;
+        align-content: flex-start;
+        align-items: center;
         justify-content: center;
+        row-gap: 0.35rem;
+        column-gap: 1rem;
+        line-height: 1.35;
+    }
+
+    .footer-link {
+        margin: 0;
+        line-height: 1.35;
     }
 
     .news-item {
