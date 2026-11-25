@@ -37,7 +37,7 @@
         rel="stylesheet">
 
     <!-- 自訂樣式 -->
-    <link rel="stylesheet" href="style.css?v=2">
+    <link rel="stylesheet" href="style.css?v=3">
 </head>
 
 <body>
@@ -334,14 +334,16 @@
                     </div>
                 </div>
                 <div class="footer-links">
-                    <a href="#donate-heading" class="footer-link" id="footer-donate" data-i18n="footer-donate">贊助我們</a>
-                    <a href="#company-heading" class="footer-link" id="footer-company"
+                    <a href="terms.html" class="footer-link" id="footer-terms" data-i18n="footer-terms">服務條款</a>
+                    <a href="privacy.html" class="footer-link" id="footer-privacy" data-i18n="footer-privacy">隱私權政策</a>
+                    <a href="index.html#donate-heading" class="footer-link" id="footer-donate" data-i18n="footer-donate">贊助我們</a>
+                    <a href="index.html#company-heading" class="footer-link" id="footer-company"
                         data-i18n="footer-company">公司概要</a>
-                    <a href="#news-heading" class="footer-link" id="footer-news" data-i18n="footer-news">最新消息</a>
-                    <a href="#org-heading" class="footer-link" id="footer-org" data-i18n="footer-org">關聯組織</a>
-                    <a href="#services-heading" class="footer-link" id="footer-services"
+                    <a href="index.html#news-heading" class="footer-link" id="footer-news" data-i18n="footer-news">最新消息</a>
+                    <a href="index.html#org-heading" class="footer-link" id="footer-org" data-i18n="footer-org">關聯組織</a>
+                    <a href="index.html#services-heading" class="footer-link" id="footer-services"
                         data-i18n="footer-services">服務項目</a>
-                    <a href="#about-heading" class="footer-link" id="footer-about" data-i18n="footer-about">關於我們</a>
+                    <a href="index.html#about-heading" class="footer-link" id="footer-about" data-i18n="footer-about">關於我們</a>
                 </div>
             </div>
         </div>
@@ -350,9 +352,11 @@
     <!-- =============================================
          語言切換邏輯 Language Switcher Logic
     ============================================= -->
+    <script src="i18n.js"></script>
     <script>
         const translations = {
             'zh': {
+                'doc-title': '石桂商社 | SAKE CORP.',
                 'hero-tagline': '石桂商社：致力於嘗試各種可能。',
                 'about-heading': '關於我們',
                 'about-title': '致力於嘗試各種可能',
@@ -393,6 +397,8 @@
                 'donate-btn': '捐款給我們',
                 'donate-note': '我們承諾將部分收益捐助給 Stripe Climate 的碳清除計畫。',
                 'footer-donate': '贊助我們',
+                'footer-terms': '服務條款',
+                'footer-privacy': '隱私權政策',
                 'footer-company': '公司概要',
                 'footer-news': '最新消息',
                 'footer-org': '關聯組織',
@@ -401,6 +407,7 @@
                 'footer-copy': '© 2026 石桂商社 SAKE CORP. All rights reserved.'
             },
             'en': {
+                'doc-title': 'SAKE CORP.',
                 'hero-tagline': 'Sake Corp.: Dedicated to exploring all possibilities.',
                 'about-heading': 'About Us',
                 'about-title': 'Dedicated to Exploring All Possibilities',
@@ -441,6 +448,8 @@
                 'donate-btn': 'Donate Now',
                 'donate-note': 'We are committed to donating a portion of our revenue to Stripe Climate\'s carbon removal initiatives.',
                 'footer-donate': 'Donate',
+                'footer-terms': 'Terms of Service',
+                'footer-privacy': 'Privacy Policy',
                 'footer-company': 'Company Overview',
                 'footer-news': 'News',
                 'footer-org': 'Affiliated Organizations',
@@ -449,6 +458,7 @@
                 'footer-copy': '© 2026 Sake Corp. All rights reserved.'
             },
             'jp': {
+                'doc-title': '石桂商社 | SAKE CORP.',
                 'hero-tagline': '石桂商社：あらゆる可能性を探求し続けます。',
                 'about-heading': '私たちについて',
                 'about-title': 'あらゆる可能性の探求へ',
@@ -489,6 +499,8 @@
                 'donate-btn': '寄付する',
                 'donate-note': '収益の一部をStripe Climateの炭素除去プロジェクトに寄付することをお約束します。',
                 'footer-donate': '寄付・支援',
+                'footer-terms': '利用規約',
+                'footer-privacy': 'プライバシーポリシー',
                 'footer-company': '会社概要',
                 'footer-news': '最新情報',
                 'footer-org': '関連組織',
@@ -498,39 +510,8 @@
             }
         };
 
-        document.addEventListener('DOMContentLoaded', () => {
-            const langLinks = document.querySelectorAll('.nav-lang-link');
-            const i18nElements = document.querySelectorAll('[data-i18n]');
-
-            const setLanguage = (lang) => {
-                // Update html lang attribute
-                const htmlLang = lang === 'zh' ? 'zh-tw' : (lang === 'en' ? 'en' : 'ja');
-                document.documentElement.lang = htmlLang;
-
-                // Update link active state
-                langLinks.forEach(link => {
-                    link.classList.remove('is-active');
-                    if (link.id === `lang-${lang}`) {
-                        link.classList.add('is-active');
-                    }
-                });
-
-                // Translate elements
-                i18nElements.forEach(el => {
-                    const key = el.getAttribute('data-i18n');
-                    if (translations[lang] && translations[lang][key]) {
-                        el.innerHTML = translations[lang][key];
-                    }
-                });
-            };
-
-            langLinks.forEach(link => {
-                link.addEventListener('click', (e) => {
-                    e.preventDefault();
-                    const lang = link.id.split('-')[1];
-                    setLanguage(lang);
-                });
-            });
+        document.addEventListener('DOMContentLoaded', function () {
+            initI18n(translations);
         });
     </script>
 </body>

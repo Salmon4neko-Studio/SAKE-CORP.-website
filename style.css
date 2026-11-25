@@ -517,7 +517,7 @@ img {
 
 .footer-inner {
     display: flex;
-    align-items: center;
+    align-items: flex-start;
     justify-content: space-between;
     flex-wrap: wrap;
     gap: 1rem;
@@ -542,7 +542,10 @@ img {
 
 .footer-links {
     display: flex;
-    gap: 1.5rem;
+    flex-wrap: wrap;
+    gap: 0.7rem 1.25rem;
+    justify-content: flex-end;
+    flex: 1 1 22rem;
 }
 
 .footer-link {
@@ -695,5 +698,175 @@ img {
 @media (min-width: 769px) {
     .card-grid {
         grid-template-columns: repeat(3, 1fr);
+    }
+}
+
+
+/* =============================================
+   法律文件頁 Legal Document Pages
+============================================= */
+.legal-hero {
+    padding: 3.5rem 0 1.75rem;
+}
+
+.legal-title {
+    font-size: clamp(2.1rem, 6vw, 3.4rem);
+    font-weight: 900;
+    letter-spacing: -0.02em;
+    color: var(--text-primary);
+    margin: 0 0 1rem;
+    line-height: 1.15;
+}
+
+.legal-meta {
+    color: var(--text-muted);
+    font-size: 0.9rem;
+    margin: 0 0 0.75rem;
+}
+
+.legal-authority {
+    color: var(--text-secondary);
+    font-size: 0.92rem;
+    margin: 0 0 1.25rem;
+    max-width: 42rem;
+    line-height: 1.7;
+}
+
+.legal-back {
+    display: inline-block;
+    font-size: 0.9rem;
+    font-weight: 500;
+    color: var(--text-primary);
+    text-decoration: none;
+    border-bottom: 1px solid var(--text-primary);
+    padding-bottom: 1px;
+    transition: opacity 0.2s ease;
+}
+
+.legal-back:hover {
+    opacity: 0.6;
+}
+
+.legal-toc {
+    background: #ffffff;
+    border: 1px solid var(--border-color);
+    border-radius: 8px;
+    padding: 1.5rem 1.75rem;
+    margin: 0 0 2.5rem;
+}
+
+.legal-toc-title {
+    font-size: 0.85rem;
+    font-weight: 700;
+    margin: 0 0 0.9rem;
+    letter-spacing: 0.04em;
+    color: var(--text-primary);
+}
+
+.legal-toc ol {
+    margin: 0;
+    padding-left: 1.25rem;
+    columns: 2;
+    column-gap: 2rem;
+}
+
+.legal-toc li {
+    font-size: 0.9rem;
+    margin: 0.28rem 0;
+    break-inside: avoid;
+    color: var(--text-secondary);
+    line-height: 1.5;
+}
+
+.legal-toc a {
+    color: var(--text-primary);
+    text-decoration: none;
+}
+
+.legal-toc a:hover {
+    text-decoration: underline;
+}
+
+.legal-article {
+    padding-bottom: 4rem;
+}
+
+.legal-section {
+    margin: 0 0 2.75rem;
+    scroll-margin-top: 84px;
+}
+
+.legal-section h2 {
+    font-size: 1.25rem;
+    font-weight: 700;
+    margin: 0 0 1rem;
+    padding-bottom: 0.5rem;
+    border-bottom: 1px solid var(--border-color);
+    color: var(--text-primary);
+    line-height: 1.4;
+}
+
+.legal-section h3 {
+    font-size: 1.02rem;
+    font-weight: 700;
+    margin: 1.5rem 0 0.6rem;
+    color: var(--text-primary);
+}
+
+.legal-section p {
+    color: var(--text-secondary);
+    line-height: 1.8;
+    margin: 0 0 0.9rem;
+    font-size: 0.97rem;
+}
+
+.legal-section ul,
+.legal-section ol {
+    color: var(--text-secondary);
+    line-height: 1.8;
+    margin: 0 0 0.9rem;
+    padding-left: 1.4rem;
+    font-size: 0.97rem;
+}
+
+.legal-section li {
+    margin: 0.28rem 0;
+}
+
+.legal-section a {
+    color: var(--text-primary);
+    border-bottom: 1px solid var(--border-color);
+    text-decoration: none;
+    transition: border-color 0.2s ease;
+}
+
+.legal-section a:hover {
+    border-color: var(--text-primary);
+}
+
+#refund:target {
+    outline: 2px solid var(--text-primary);
+    outline-offset: 10px;
+    border-radius: 4px;
+}
+
+@media (max-width: 640px) {
+    .legal-hero {
+        padding: 2.5rem 0 1.25rem;
+    }
+
+    .legal-toc {
+        padding: 1.25rem 1.15rem;
+    }
+
+    .legal-toc ol {
+        columns: 1;
+    }
+
+    /* Keep legal headings left-aligned (override centered .section-label habit) */
+    .legal-title,
+    .legal-section h2,
+    .legal-toc-title {
+        text-align: left;
     }
 }
